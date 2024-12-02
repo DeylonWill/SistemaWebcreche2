@@ -4,12 +4,14 @@ package com.example.Atividade.Controller;
 import com.example.Atividade.Model.Crianca;
 import com.example.Atividade.Model.Turma;
 import com.example.Atividade.Model.AtividadeEvento;
+import com.example.Atividade.Repository.CriancaRepository;
+import com.example.Atividade.Repository.TurmaRepository;
+import com.example.Atividade.Repository.AtividadeEventoRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -20,9 +22,14 @@ import java.util.List;
 @Controller
 public class TelaController {
 
-    private final List<Crianca> criancas = new ArrayList<>();
-    private final List<Turma> turmas = new ArrayList<>();
-    private final List<AtividadeEvento> atividades = new ArrayList<>();
+    @Autowired
+    private CriancaRepository criancaRepository;
+
+    @Autowired
+    private TurmaRepository turmaRepository;
+
+    @Autowired
+    private AtividadeEventoRepository atividadeEventoRepository;
 
     @GetMapping("/")
     public String index() {
@@ -31,46 +38,46 @@ public class TelaController {
 
     @GetMapping("/cadastro-criancas")
     public String cadastroCriancas(Model model) {
-        model.addAttribute("criancas", criancas);
+        model.addAttribute("criancas", criancaRepository.findAll());
         return "cadastro-criancas";
     }
 
     @PostMapping("/cadastro-criancas")
-    public String adicionarCrianca(@RequestParam String nome, 
-                                    @RequestParam String responsavel, 
-                                    @RequestParam int idade, 
+    public String adicionarCrianca(@RequestParam String nome,
+                                    @RequestParam String responsavel,
+                                    @RequestParam int idade,
                                     @RequestParam String contato) {
         Crianca crianca = new Crianca(nome, responsavel, idade, contato);
-        criancas.add(crianca);
+        criancaRepository.save(crianca);
         return "redirect:/cadastro-criancas";
     }
 
     @GetMapping("/gerenciamento-turmas")
     public String gerenciamentoTurmas(Model model) {
-        model.addAttribute("turmas", turmas);
+        model.addAttribute("turmas", turmaRepository.findAll());
         return "gerenciamento-turmas";
     }
 
     @PostMapping("/gerenciamento-turmas")
-    public String adicionarTurma(@RequestParam String nome, 
+    public String adicionarTurma(@RequestParam String nome,
                                   @RequestParam String horarios) {
         Turma turma = new Turma(nome, horarios);
-        turmas.add(turma);
+        turmaRepository.save(turma);
         return "redirect:/gerenciamento-turmas";
     }
 
     @GetMapping("/atividades-eventos")
     public String atividadesEventos(Model model) {
-        model.addAttribute("atividades", atividades);
+        model.addAttribute("atividades", atividadeEventoRepository.findAll());
         return "atividades-eventos";
     }
 
     @PostMapping("/atividades-eventos")
-    public String adicionarAtividade(@RequestParam String nome, 
-                                      @RequestParam String data, 
+    public String adicionarAtividade(@RequestParam String nome,
+                                      @RequestParam String data,
                                       @RequestParam String descricao) {
         AtividadeEvento atividade = new AtividadeEvento(nome, data, descricao);
-        atividades.add(atividade);
+        atividadeEventoRepository.save(atividade);
         return "redirect:/atividades-eventos";
     }
 }

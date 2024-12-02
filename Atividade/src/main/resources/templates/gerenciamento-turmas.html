@@ -61,5 +61,59 @@
     <footer>
         <p>© 2024 Creche Web - Todos os direitos reservados.</p>
     </footer>
+    <script>
+    const tabelaTurmas = document.getElementById('listaTurmas').querySelector('tbody');
+
+    // Carrega as turmas salvas no LocalStorage
+    function carregarTurmas() {
+        const turmasSalvas = JSON.parse(localStorage.getItem('turmas')) || [];
+        turmasSalvas.forEach(turma => {
+            const novaLinha = tabelaTurmas.insertRow();
+            novaLinha.innerHTML = `
+                <td>${turma.nome}</td>
+                <td>${turma.horarios}</td>
+            `;
+        });
+    }
+
+    // Salva turmas no LocalStorage
+    function salvarTurma(nome, horarios) {
+        const turmas = JSON.parse(localStorage.getItem('turmas')) || [];
+        turmas.push({ nome, horarios });
+        localStorage.setItem('turmas', JSON.stringify(turmas));
+    }
+
+    // Adiciona nova turma
+    document.getElementById('turmaForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const nomeTurma = document.getElementById('nomeTurma').value;
+        const horariosTurma = document.getElementById('horariosTurma').value;
+
+        salvarTurma(nomeTurma, horariosTurma);
+
+        const novaLinha = tabelaTurmas.insertRow();
+        novaLinha.innerHTML = `
+            <td>${nomeTurma}</td>
+            <td>${horariosTurma}</td>
+        `;
+
+        document.getElementById('turmaForm').reset();
+    });
+
+    // Pesquisa dinâmica
+    document.getElementById('pesquisaTurma').addEventListener('input', function() {
+        const filtro = this.value.toLowerCase();
+        const linhas = tabelaTurmas.querySelectorAll('tr');
+
+        linhas.forEach(linha => {
+            const nome = linha.cells[0].textContent.toLowerCase();
+            linha.style.display = nome.includes(filtro) ? '' : 'none';
+        });
+    });
+
+    // Carrega as turmas ao iniciar
+    carregarTurmas();
+</script>
 </body>
 </html>

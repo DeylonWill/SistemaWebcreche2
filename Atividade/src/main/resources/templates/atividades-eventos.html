@@ -65,6 +65,65 @@
     <footer>
         <p>© 2024 Creche Web - Todos os direitos reservados.</p>
     </footer>
+    <script>
+    const tabelaAtividades = document.getElementById('listaAtividades').querySelector('tbody');
+
+    // Carrega as atividades salvas no LocalStorage
+    function carregarAtividades() {
+        const atividadesSalvas = JSON.parse(localStorage.getItem('atividades')) || [];
+        atividadesSalvas.forEach(atividade => {
+            const novaLinha = tabelaAtividades.insertRow();
+            novaLinha.innerHTML = `
+                <td>${atividade.nome}</td>
+                <td>${atividade.data}</td>
+                <td>${atividade.descricao}</td>
+            `;
+        });
+    }
+
+    // Salva atividades no LocalStorage
+    function salvarAtividade(nome, data, descricao) {
+        const atividades = JSON.parse(localStorage.getItem('atividades')) || [];
+        atividades.push({ nome, data, descricao });
+        localStorage.setItem('atividades', JSON.stringify(atividades));
+    }
+
+    // Adiciona nova atividade
+    document.getElementById('atividadeForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const nomeAtividade = document.getElementById('nomeAtividade').value;
+        const dataAtividade = document.getElementById('dataAtividade').value;
+        const descricaoAtividade = document.getElementById('descricaoAtividade').value;
+
+        salvarAtividade(nomeAtividade, dataAtividade, descricaoAtividade);
+
+        const novaLinha = tabelaAtividades.insertRow();
+        novaLinha.innerHTML = `
+            <td>${nomeAtividade}</td>
+            <td>${dataAtividade}</td>
+            <td>${descricaoAtividade}</td>
+        `;
+
+        document.getElementById('atividadeForm').reset();
+    });
+
+    // Pesquisa dinâmica
+    document.getElementById('pesquisaAtividade').addEventListener('input', function() {
+        const filtro = this.value.toLowerCase();
+        const linhas = tabelaAtividades.querySelectorAll('tr');
+
+        linhas.forEach(linha => {
+            const nome = linha.cells[0].textContent.toLowerCase();
+            const data = linha.cells[1].textContent.toLowerCase();
+
+            linha.style.display = (nome.includes(filtro) || data.includes(filtro)) ? '' : 'none';
+        });
+    });
+
+    // Carrega as atividades ao iniciar
+    carregarAtividades();
+</script>
 </body>
 </html>
 
