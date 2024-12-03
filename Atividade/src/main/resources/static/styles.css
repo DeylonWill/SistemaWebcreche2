@@ -143,3 +143,30 @@ input[type="text"]:focus, input[type="date"]:focus, textarea:focus {
 }
 
 
+form .botao-lista {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    font-size: 0.9em;
+    padding: 8px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    width: 100%;
+    max-width: 300px;
+    border-radius: 4px;
+}
+
+form .botao-lista:hover {
+    background-color: #45a049;
+}
+
+.mensagem-sucesso {
+    color: green;
+    font-size: 1rem;
+    margin-top: 10px;
+    text-align: center;
+}
+

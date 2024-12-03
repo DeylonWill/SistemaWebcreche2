@@ -25,6 +25,12 @@ public class TelaController {
     @Autowired
     private CriancaRepository criancaRepository;
 
+    @GetMapping("/lista-criancas")
+    public String listaCriancas(Model model) {
+        model.addAttribute("criancas", criancaRepository.findAll());
+        return "lista-criancas"; // Redireciona para a página de lista de crianças
+    }
+
     @Autowired
     private TurmaRepository turmaRepository;
 

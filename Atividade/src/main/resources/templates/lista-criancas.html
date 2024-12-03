@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Crianças Cadastradas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Lista de Crianças Cadastradas</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Início</a></li>
+                <li><a href="/cadastro-criancas">Cadastrar Crianças</a></li>
+                <li><a href="/gerenciamento-turmas">Gerenciamento de Turmas</a></li>
+                <li><a href="/atividades-eventos">Atividades e Eventos</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Lista de Crianças</h2>
+        <table id="listaCriancas">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Responsável</th>
+                    <th>Idade</th>
+                    <th>Contato</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- As crianças serão adicionadas aqui dinamicamente -->
+            </tbody>
+        </table>
+    </main>
+    <footer>
+        <p>© 2024 Creche Web - Todos os direitos reservados.</p>
+    </footer>
+    <script>
+        // Função para carregar as crianças salvas
+        function carregarCriancas() {
+            const criancas = JSON.parse(localStorage.getItem('criancas')) || [];
+            const tabelaCriancas = document.getElementById('listaCriancas').querySelector('tbody');
+            
+            criancas.forEach(crianca => {
+                const novaLinha = tabelaCriancas.insertRow();
+                novaLinha.innerHTML = `
+                    <td>${crianca.nome}</td>
+                    <td>${crianca.responsavel}</td>
+                    <td>${crianca.idade}</td>
+                    <td>${crianca.contato}</td>
+                `;
+            });
+        }
+
+        // Carregar as crianças quando a página for carregada
+        carregarCriancas();
+    </script>
+</body>
+</html>

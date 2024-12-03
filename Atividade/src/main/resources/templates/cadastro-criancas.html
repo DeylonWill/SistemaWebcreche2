@@ -33,10 +33,32 @@
             <br><br>
             <button type="submit">Cadastrar</button>
         </form>
+        <!-- Botão para ir à lista de crianças cadastradas -->
+        <form id="botao-lista">
+        <br><br>
+        <button type="button" class="botao-lista" onclick="window.location.href='/lista-criancas'">Ver Lista de Crianças</button>
+        </form>
     </main>
     <footer>
         <p>© 2024 Creche Web - Todos os direitos reservados.</p>
     </footer>
-    <script src="script.js"></script>
+    <script>
+        document.getElementById('form-cadastro').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const nome = document.getElementById('nome').value;
+            const responsavel = document.getElementById('responsavel').value;
+            const idade = document.getElementById('idade').value;
+            const contato = document.getElementById('contato').value;
+
+            // Salvar os dados no LocalStorage
+            const criancas = JSON.parse(localStorage.getItem('criancas')) || [];
+            criancas.push({ nome, responsavel, idade, contato });
+            localStorage.setItem('criancas', JSON.stringify(criancas));
+
+            // Limpar o formulário após o envio
+            document.getElementById('form-cadastro').reset();
+        });
+    </script>
 </body>
 </html>
