@@ -1,0 +1,245 @@
+
+codigo do git bash
+
+Kaleb@DESKTOP-A4AIFU2 MINGW64 ~/Desktop/Atividades/Atividade 2 (main)
+$ git add .
+warning: in the working copy of 'Atividade/.gitattributes', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Atividade/.gitignore', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Atividade/.mvn/wrapper/maven-wrapper.properties', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Atividade/mvnw.cmd', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Atividade/pom.xml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Atividade/src/main/java/com/example/Atividade/AtividadeApplication.java', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Atividade/src/main/resources/application.properties', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Atividade/src/main/resources/static/styles.css', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Atividade/src/main/resources/templates/atividades-eventos.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Atividade/src/main/resources/templates/gerenciamento-turmas.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Atividade/src/main/resources/templates/index.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Atividade/src/test/java/com/example/Atividade/AtividadeApplicationTests.java', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Atividade/src/main/resources/templates/lista-criancas.html', LF will be replaced by CRLF the next time Git touches it
+
+Kaleb@DESKTOP-A4AIFU2 MINGW64 ~/Desktop/Atividades/Atividade 2 (main)
+$ git commit -m "Primeiro teste da Atividade3"
+[main 2278361] Primeiro teste da Atividade3
+ 5 files changed, 130 insertions(+), 33 deletions(-)
+ create mode 100644 Atividade/src/main/resources/templates/lista-criancas.html
+
+Kaleb@DESKTOP-A4AIFU2 MINGW64 ~/Desktop/Atividades/Atividade 2 (main)
+$ git add .
+warning: in the working copy of 'Atividade/.gitattributes', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Atividade/.gitignore', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Atividade/.mvn/wrapper/maven-wrapper.properties', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Atividade/mvnw.cmd', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Atividade/pom.xml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Atividade/src/main/java/com/example/Atividade/AtividadeApplication.java', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Atividade/src/main/resources/application.properties', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Atividade/src/main/resources/static/styles.css', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Atividade/src/main/resources/templates/atividades-eventos.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Atividade/src/main/resources/templates/gerenciamento-turmas.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Atividade/src/main/resources/templates/index.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Atividade/src/main/resources/templates/lista-criancas.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Atividade/src/test/java/com/example/Atividade/AtividadeApplicationTests.java', LF will be replaced by CRLF the next time Git touches it
+
+Kaleb@DESKTOP-A4AIFU2 MINGW64 ~/Desktop/Atividades/Atividade 2 (main)
+$ git commit -m "Codigo inicial"
+[main 1170d85] Codigo inicial
+ 14 files changed, 247 insertions(+), 243 deletions(-)
+ create mode 100644 Atividade/src/main/java/com/example/Atividade/Controller/CriancaController.java
+
+Kaleb@DESKTOP-A4AIFU2 MINGW64 ~/Desktop/Atividades/Atividade 2 (main)
+$ git add .
+warning: in the working copy of 'Atividade/.gitattributes', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Atividade/.gitignore', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Atividade/.mvn/wrapper/maven-wrapper.properties', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Atividade/mvnw.cmd', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Atividade/pom.xml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Atividade/src/main/java/com/example/Atividade/AtividadeApplication.java', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Atividade/src/main/resources/application.properties', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Atividade/src/main/resources/static/styles.css', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Atividade/src/main/resources/templates/atividades-eventos.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Atividade/src/main/resources/templates/gerenciamento-turmas.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Atividade/src/main/resources/templates/index.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Atividade/src/main/resources/templates/lista-criancas.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Atividade/src/test/java/com/example/Atividade/AtividadeApplicationTests.java', LF will be replaced by CRLF the next time Git touches it
+
+Kaleb@DESKTOP-A4AIFU2 MINGW64 ~/Desktop/Atividades/Atividade 2 (main)
+$ git commit -m "Coresao de bugs"
+[main 1eda308] Coresao de bugs
+ 6 files changed, 106 insertions(+), 93 deletions(-)
+
+Kaleb@DESKTOP-A4AIFU2 MINGW64 ~/Desktop/Atividades/Atividade 2 (main)
+$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
