@@ -30,13 +30,18 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- As crianças serão adicionadas aqui dinamicamente -->
+                <!-- Usando Thymeleaf para exibir as crianças -->
+                <tr th:each="crianca : ${criancas}">
+                    <td th:text="${crianca.nome}">Nome da criança</td>
+                    <td th:text="${crianca.responsavel}">Responsável</td>
+                    <td th:text="${crianca.idade}">Idade</td>
+                    <td th:text="${crianca.contato}">Contato</td>
+                </tr>
             </tbody>
         </table>
     </main>
     <footer>
         <p>© 2024 Creche Web - Todos os direitos reservados.</p>
     </footer>
-    
 </body>
 </html>

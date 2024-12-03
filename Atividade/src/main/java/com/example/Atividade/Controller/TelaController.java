@@ -1,6 +1,5 @@
 package com.example.Atividade.Controller;
 
-import com.example.Atividade.Model.Crianca;
 import com.example.Atividade.Model.Turma;
 import com.example.Atividade.Model.AtividadeEvento;
 import com.example.Atividade.Repository.CriancaRepository;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
  *
  * @author Deylon
  */
-
 @Controller
 public class TelaController {
 
@@ -26,10 +24,11 @@ public class TelaController {
 
     @GetMapping("/lista-criancas")
     public String listaCriancas(Model model) {
+        // Recupera todas as crianças do repositório
         model.addAttribute("criancas", criancaRepository.findAll());
         return "lista-criancas"; // Redireciona para a página de lista de crianças
     }
-    
+
     @Autowired
     private TurmaRepository turmaRepository;
 
@@ -49,14 +48,22 @@ public class TelaController {
 
     @GetMapping("/gerenciamento-turmas")
     public String gerenciamentoTurmas(Model model) {
+        // Listando todas as turmas do banco de dados
         model.addAttribute("turmas", turmaRepository.findAll());
         return "gerenciamento-turmas";
     }
 
     @PostMapping("/gerenciamento-turmas")
-    public String adicionarTurma(@RequestParam String nomeTurma,
-            @RequestParam String horariosTurma) {
+    public String adicionarTurma(@RequestParam String nomeTurma, @RequestParam String horariosTurma) {
+        // Garantir que os dados foram recebidos corretamente
+        if (nomeTurma == null || nomeTurma.isEmpty()) {
+            // Se o nome da turma for nulo ou vazio, não podemos salvar
+            return "redirect:/gerenciamento-turmas"; // Redirecionar de volta para a lista de turmas
+        }
+
+        // Criando uma nova turma
         Turma turma = new Turma(nomeTurma, horariosTurma);
+        // Salvando a turma no banco de dados
         turmaRepository.save(turma);
         return "redirect:/gerenciamento-turmas";
     }

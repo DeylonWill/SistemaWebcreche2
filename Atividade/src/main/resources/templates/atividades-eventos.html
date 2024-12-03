@@ -2,70 +2,67 @@
 
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciamento de Atividades e Eventos</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header>
-        <h1>Gerenciamento de Atividades e Eventos</h1>
-        <nav>
-            <ul>
-                <li><a href="/">Início</a></li>
-                <li><a href="/cadastro-criancas">Cadastro de Crianças</a></li>
-                <li><a href="/gerenciamento-turmas">Gerenciamento de Turmas</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section>
-            <h2>Registrar Atividade ou Evento</h2>
-            <form id="atividadeForm">
-                <div class="form-inline">
-                    <div>
-                        <label for="nomeAtividade">Nome da Atividade ou Evento:</label>
-                        <input type="text" id="nomeAtividade" name="nomeAtividade" required>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gerenciamento de Atividades e Eventos</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <header>
+            <h1>Gerenciamento de Atividades e Eventos</h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Início</a></li>
+                    <li><a href="/cadastro-criancas">Cadastro de Crianças</a></li>
+                    <li><a href="/gerenciamento-turmas">Gerenciamento de Turmas</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <section>
+                <h2>Registrar Atividade ou Evento</h2>
+                <form action="/atividades-eventos" method="post">
+                    <div class="form-inline">
+                        <div>
+                            <label for="nomeAtividade">Nome da Atividade ou Evento:</label>
+                            <input type="text" id="nomeAtividade" name="nome" required>
+                        </div>
+                        <div>
+                            <label for="dataAtividade">Data:</label>
+                            <input type="date" id="dataAtividade" name="data" required>
+                        </div>
                     </div>
-                    <div>
-                        <label for="dataAtividade">Data:</label>
-                        <input type="date" id="dataAtividade" name="dataAtividade" required>
-                    </div>
-                </div>
-                <br>
-            <label for="descricaoAtividade">Descrição:</label><br>
-            <textarea id="descricaoAtividade" name="descricaoAtividade" rows="3" required></textarea>
-            <br>
-            <button type="submit">Registrar</button>
-            </form>
-        </section>
-        
-        <section>
-            <h2>Pesquisar Atividades ou Eventos</h2>
-            <input type="text" id="pesquisaAtividade" placeholder="Digite o nome ou data">
-        </section>
-        
-        <section>
-            <h2>Lista de Atividades e Eventos</h2>
-            <table id="listaAtividades">
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Data</th>
-                        <th>Descrição</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Atividades serão adicionadas aqui dinamicamente -->
-                </tbody>
-            </table>
-        </section>
-    </main>
-    <footer>
-        <p>© 2024 Creche Web - Todos os direitos reservados.</p>
-    </footer>
-    
-</body>
-</html>
+                    <br>
+                    <label for="descricaoAtividade">Descrição:</label><br>
+                    <textarea id="descricaoAtividade" name="descricao" rows="3" required></textarea>
+                    <br>
+                    <button type="submit">Registrar</button>
+                </form>
+            </section>
 
+            <section>
+                <h2>Lista de Atividades e Eventos</h2>
+                <table id="listaAtividades">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Data</th>
+                            <th>Descrição</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="atividade : ${atividades}">
+                            <td th:text="${atividade.nome}"></td>
+                            <td th:text="${atividade.data}"></td>
+                            <td th:text="${atividade.descricao}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+        <footer>
+            <p>© 2024 Creche Web - Todos os direitos reservados.</p>
+        </footer>
+    </body>
+</html>
