@@ -2,10 +2,9 @@
 package com.example.Atividade.Repository;
 
 import com.example.Atividade.Model.AtividadeEvento;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -13,14 +12,5 @@ import java.util.List;
  */
 
 @Repository
-public class AtividadeEventoRepository {
-    private final List<AtividadeEvento> atividades = new ArrayList<>();
-
-    public List<AtividadeEvento> findAll() {
-        return atividades;
-    }
-
-    public void save(AtividadeEvento atividadeEvento) {
-        atividades.add(atividadeEvento);
-    }
+public interface AtividadeEventoRepository extends JpaRepository<AtividadeEvento, Long> {
 }

@@ -37,25 +37,6 @@
     <footer>
         <p>© 2024 Creche Web - Todos os direitos reservados.</p>
     </footer>
-    <script>
-        // Função para carregar as crianças salvas
-        function carregarCriancas() {
-            const criancas = JSON.parse(localStorage.getItem('criancas')) || [];
-            const tabelaCriancas = document.getElementById('listaCriancas').querySelector('tbody');
-            
-            criancas.forEach(crianca => {
-                const novaLinha = tabelaCriancas.insertRow();
-                novaLinha.innerHTML = `
-                    <td>${crianca.nome}</td>
-                    <td>${crianca.responsavel}</td>
-                    <td>${crianca.idade}</td>
-                    <td>${crianca.contato}</td>
-                `;
-            });
-        }
-
-        // Carregar as crianças quando a página for carregada
-        carregarCriancas();
-    </script>
+    
 </body>
 </html>

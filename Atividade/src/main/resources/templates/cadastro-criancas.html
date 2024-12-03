@@ -42,22 +42,36 @@
     <footer>
         <p>© 2024 Creche Web - Todos os direitos reservados.</p>
     </footer>
+
     <script>
-        document.getElementById('form-cadastro').addEventListener('submit', function(event) {
-            event.preventDefault();
+        document.getElementById('form-cadastro').addEventListener('submit', function(e) {
+            e.preventDefault(); // Previne o comportamento padrão do formulário
+            
+            const formData = new FormData(this);
+            const data = {
+                nome: formData.get('nome'),
+                responsavel: formData.get('responsavel'),
+                idade: formData.get('idade'),
+                contato: formData.get('contato')
+            };
 
-            const nome = document.getElementById('nome').value;
-            const responsavel = document.getElementById('responsavel').value;
-            const idade = document.getElementById('idade').value;
-            const contato = document.getElementById('contato').value;
-
-            // Salvar os dados no LocalStorage
-            const criancas = JSON.parse(localStorage.getItem('criancas')) || [];
-            criancas.push({ nome, responsavel, idade, contato });
-            localStorage.setItem('criancas', JSON.stringify(criancas));
-
-            // Limpar o formulário após o envio
-            document.getElementById('form-cadastro').reset();
+            fetch('/api/criancas', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('Criança cadastrada com sucesso!');
+                // Redireciona para a lista de crianças cadastradas
+                window.location.href = '/lista-criancas';
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                alert('Erro ao cadastrar a criança!');
+            });
         });
     </script>
 </body>

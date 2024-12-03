@@ -1,4 +1,3 @@
-
 package com.example.Atividade.Controller;
 
 import com.example.Atividade.Model.Crianca;
@@ -7,12 +6,12 @@ import com.example.Atividade.Model.AtividadeEvento;
 import com.example.Atividade.Repository.CriancaRepository;
 import com.example.Atividade.Repository.TurmaRepository;
 import com.example.Atividade.Repository.AtividadeEventoRepository;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 
 /**
  *
@@ -30,7 +29,7 @@ public class TelaController {
         model.addAttribute("criancas", criancaRepository.findAll());
         return "lista-criancas"; // Redireciona para a página de lista de crianças
     }
-
+    
     @Autowired
     private TurmaRepository turmaRepository;
 
@@ -48,16 +47,6 @@ public class TelaController {
         return "cadastro-criancas";
     }
 
-    @PostMapping("/cadastro-criancas")
-    public String adicionarCrianca(@RequestParam String nome,
-                                    @RequestParam String responsavel,
-                                    @RequestParam int idade,
-                                    @RequestParam String contato) {
-        Crianca crianca = new Crianca(nome, responsavel, idade, contato);
-        criancaRepository.save(crianca);
-        return "redirect:/cadastro-criancas";
-    }
-
     @GetMapping("/gerenciamento-turmas")
     public String gerenciamentoTurmas(Model model) {
         model.addAttribute("turmas", turmaRepository.findAll());
@@ -65,11 +54,24 @@ public class TelaController {
     }
 
     @PostMapping("/gerenciamento-turmas")
-    public String adicionarTurma(@RequestParam String nome,
-                                  @RequestParam String horarios) {
-        Turma turma = new Turma(nome, horarios);
+    public String adicionarTurma(@RequestParam String nomeTurma,
+            @RequestParam String horariosTurma) {
+        Turma turma = new Turma(nomeTurma, horariosTurma);
         turmaRepository.save(turma);
         return "redirect:/gerenciamento-turmas";
+    }
+
+    @RestController
+    @RequestMapping("/gerenciamento-turmas-json")
+    public class TurmaRestController {
+
+        @Autowired
+        private TurmaRepository turmaRepository;
+
+        @GetMapping
+        public List<Turma> listarTurmas() {
+            return turmaRepository.findAll();
+        }
     }
 
     @GetMapping("/atividades-eventos")
@@ -80,8 +82,8 @@ public class TelaController {
 
     @PostMapping("/atividades-eventos")
     public String adicionarAtividade(@RequestParam String nome,
-                                      @RequestParam String data,
-                                      @RequestParam String descricao) {
+            @RequestParam String data,
+            @RequestParam String descricao) {
         AtividadeEvento atividade = new AtividadeEvento(nome, data, descricao);
         atividadeEventoRepository.save(atividade);
         return "redirect:/atividades-eventos";
